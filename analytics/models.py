@@ -3,4 +3,12 @@ from django.db import models
 # Create your models here.
 
 class Hit(models.Model):
-    pass
+    source_ip = models.CharField(max_length=512)
+    timestamp = models.DateTimeField()
+    method = models.CharField(max_length=10)
+    url = models.CharField(max_length=4096)
+    status_code = models.IntegerField()
+    response_size = models.IntegerField()
+    referer_url = models.CharField(max_length=4096)
+    user_agent = models.CharField(max_length=512)
+

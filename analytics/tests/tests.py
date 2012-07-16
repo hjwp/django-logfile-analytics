@@ -1,7 +1,21 @@
 from datetime import datetime
 from django.test import TestCase
+
 from analytics.models import Hit
 from analytics.parser import parse_logfile
+
+class HitModelTest(TestCase):
+    def test_defaults(self):
+        h = Hit()
+        self.assertEqual(h.source_ip, '')
+        self.assertEqual(h.timestamp, None)
+        self.assertEqual(h.method, '')
+        self.assertEqual(h.url, '')
+        self.assertEqual(h.status_code, None)
+        self.assertEqual(h.response_size, None)
+        self.assertEqual(h.referer_url, '')
+        self.assertEqual(h.user_agent, '')
+
 
 class ParserTest(TestCase):
 
