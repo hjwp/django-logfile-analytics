@@ -11,12 +11,13 @@ def quote_fixing_iterator(filename):
 def parse_logfile(filename):
     row_parser = csv.reader(quote_fixing_iterator(filename), delimiter=" ")
     for row in row_parser:
-        print row
         source_ip, _, __, timestamp_str, method_url_protocol, status_code, response_size, referer_url, user_agent = row
         try:
             response_size = int(response_size)
         except ValueError:
-            response_size = 0
+            response_size = None
+        if referer_url == '-':
+            referer_url = None
         method, url, _ = method_url_protocol.split()
         timestamp = datetime.strptime(timestamp_str[:-6], '%d/%b/%Y:%H:%M:%S')
         Hit(

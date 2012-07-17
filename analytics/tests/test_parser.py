@@ -5,18 +5,6 @@ from django.test import TestCase
 from analytics.models import Hit
 from analytics.parser import parse_logfile
 
-class HitModelTest(TestCase):
-    def test_defaults(self):
-        h = Hit()
-        self.assertEqual(h.source_ip, '')
-        self.assertEqual(h.timestamp, None)
-        self.assertEqual(h.method, '')
-        self.assertEqual(h.url, '')
-        self.assertEqual(h.status_code, None)
-        self.assertEqual(h.response_size, None)
-        self.assertEqual(h.referer_url, '')
-        self.assertEqual(h.user_agent, '')
-
 
 class ParserTest(TestCase):
 
@@ -54,7 +42,7 @@ class ParserTest(TestCase):
         self.assertEqual(hit3.method, 'GET')
         self.assertEqual(hit3.url, '/static/images/admin03t.png')
         self.assertEqual(hit3.status_code, 304)
-        self.assertEqual(hit3.response_size, 0)
+        self.assertEqual(hit3.response_size, None)
         self.assertEqual(hit3.referer_url, None)
         self.assertEqual(hit3.user_agent, 'Googlebot-Image/1.0')
 

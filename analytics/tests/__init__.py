@@ -1,1 +1,2 @@
-from tests import * #needed for django test runner to pick up tests.
+from analytics.tests.test_models import *
+from analytics.tests.test_parser import *
