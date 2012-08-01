@@ -117,6 +117,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'analytics',
+    'analytics_functional_tests',
 )
 
 # A sample logging configuration. The only tangible logging
